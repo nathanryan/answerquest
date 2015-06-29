@@ -1,0 +1,448 @@
+/*
+*
+* @reference https://www.youtube.com/watch?v=XIK5t7hGqME
+* @author Usman Akhtar, x13358421
+*
+*/
+
+#Container{
+    width: 1050px; 
+    margin: 0px auto;
+}
+
+@media screen and (max-width:1049px){
+    #Container{
+        width: 100%;
+    }
+}
+
+#SlideshowImages img {
+    /*overlays all the imgs*/
+    width:750px;
+    height:350px;
+    position:absolute;
+    left: 180px;
+    top: 140px;
+    transition: 1s;
+    visibility:hidden;
+}
+
+#NavLR {
+    /*Slideshow Navigation Left/Right Buttons*/
+    display:block;
+    width:750px;
+    height:350px;
+    position:absolute;
+    left: 180px;
+    top: 140px;
+}
+
+#NavPos{
+    /*Position of Nav Buttons*/
+    display:block;
+    width:100%;
+    height:20%;
+}
+
+#SlideCircles {
+
+    display:block;
+    width:5%;
+    height:15%;
+    margin-right:5%;
+    margin-top:2%;
+    float:right;        
+}
+
+#SlideCircles ul {
+    margin:0;
+    float:right;
+    display:block;
+    width:100%;
+    height:100%;
+}
+
+#SlideCircles li {
+    list-style:none;
+    display:block;
+    background-color:rgba(0, 0, 0, 1);
+    width:25%;
+    height:90%;
+    margin-left:5%;
+    float:left;     /*on the same line*/
+    visibility:hidden;
+    /*we need circles, not squares*/
+    border-bottom-left-radius:25px;
+    border-top-left-radius:25px;
+    border-bottom-right-radius:25px;
+    border-top-right-radius:25px;
+
+}
+
+#NavPos2 {
+    display:block;
+    width:100%;
+    height:15%;
+    margin-top:10%;
+}
+
+#NavLeft {
+    /*left Nav button*/
+    width:8%;
+    height:100%;
+    float:left;
+    margin-left:3%;
+    opacity:0.8;
+}
+
+#NavLeft:hover {
+    opacity:0.8;
+}
+
+#NavRight {
+    /*Right Nav button*/
+    width:8%;
+    height:100%;
+    float:right;
+    margin-right:3%;
+    opacity:0.8;
+}
+#NavRight:hover {
+    opacity:0.8;
+}
+
+/*Info bottom of Slideshow*/
+#PicInfo {
+    display:block;
+    background-color:rgba(0, 0, 0, 0.8);
+    width:100%;
+    height:10%;
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+#PicInfo p {
+    font-family: 'Eras ITC';
+    text-shadow: 1px 1px 1px #ccc;
+    font-size: 20px;
+    color: white;
+    position:absolute;
+    bottom:0;
+    left:0;
+    margin-left:3%;
+    visibility:hidden;
+}
+
+
+
+#LearnTopic1 img {
+    height: 160px;
+    width: 270px;
+    display: table;
+    float: left;
+    margin-left: 100px;
+}
+
+#LearnTopic2 img{
+    height: 160px;
+    width: 270px;
+    display: table;
+    margin:0 auto;
+    margin-right: 390px;
+}
+
+#LearnTopic3 img{
+    height: 160px;
+    width: 270px;
+    display: table;
+    float: right;
+    margin-right: 70px;
+    margin-top: -160px;
+}
+
+#title h1{
+    color:#000000;
+    text-shadow: 5px 5px 5px #A1A1A1;
+    font-size:50px;
+    margin-left:100px;
+    margin-top: -10px;
+}
+
+#LearnInfo h3{
+    color:#000000;
+    text-shadow: 5px 5px 5px #A1A1A1;
+    margin-left:100px;
+}
+
+
+
+/*Hover Effect on Topic Images*/
+
+ul.img-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+ul.img-list li {
+    display: inline-block;
+    height: 150px;
+    width: 150px;
+    margin: 0 1em 1em 0;
+    position: relative;
+}
+
+span.text-content {
+    background: rgba(0,0,0,0.5);
+    color: white;
+    cursor: pointer;
+    display: table;
+    height: 150px;
+    width: 150px;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+span.text-content span {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+span.text-content {
+    background: rgba(0,0,0,0.5);
+    color: white;
+    cursor: pointer;
+    display: table;
+    height: 150px;
+    width: 150px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+}
+
+ul.img-list li:hover span.text-content {
+    opacity: 1;
+}
+
+span.text-content {
+    background: rgba(0,0,0,0.5);
+    color: white;
+    cursor: pointer;
+    display: table;
+    height: 180px;
+    width: 280px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    transition: opacity 500ms;
+}
+
+#GeoImgSize img{
+    height: 180px;
+    width: 280px;
+    border: 5px solid #99C2FF;
+}
+
+#HisImgSize img{
+    height: 180px;
+    width: 280px;
+    border: 5px solid #99C2FF;
+}
+
+
+#MathImgSize img{
+    height: 180px;
+    width: 280px;
+    border: 5px solid #99C2FF;
+}
+
+#TitleHover h1{
+    color: White;
+    font-family: 'Eras ITC';
+    text-shadow: 1px 1px 1px #ccc;
+}
+
+
+
+
+
+
+.Topics h2 {
+    color:#00005C;
+    text-shadow: 2px 2px 2px #A1A1A1;
+}
+
+/* Grey Behind the image*/
+.Topics{
+    position:absolute;
+    display:block;
+    width:325px;
+    padding:2em 1em 1em 1em; 		
+    text-align: center;	
+
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    -ms-transition: all 300ms ease-out; 
+    -o-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+}		
+
+/* images */
+.Topics img {
+    width: 300px;
+    height:200px; 
+    border-radius:25px;
+    margin:auto;
+    display:block;		
+
+    -webkit-transform: scale(.9);
+    -moz-transform: scale(.9);
+    -ms-transform: scale(.9);
+    -o-transform: scale(.9));		
+    transform: scale(.9);
+
+    -webkit-transition: all 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+    -moz-transition: all 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+    -ms-transition: all 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+    -o-transition: all 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+    transition: all 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
+} 
+
+#Topic1{
+    left:30px;
+}
+
+#Topic2{
+    left:370px;
+}
+
+#Topic3{
+    left:700px;
+}	
+
+#Topic4{
+    left:30px;
+    top: 450px;
+}
+
+#Topic5{
+    left:370px;
+    top: 450px;
+}
+
+#Topic6{
+    left:700px;
+    top: 450px;
+}
+
+.Topics:hover {
+    background-color:white;
+    background-color: rgba(200,200,200,.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;		
+    cursor: pointer;
+}	
+
+.Topics:hover img{
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    -o-transform: scale(1));
+    -ms-transform: scale(1);
+    transform: scale(1);
+}	
+
+.Topics:hover h2 {
+    color:#3399FF;		
+}	
+
+.TopicInfo1{
+    font-family: Rockwell;
+    font-size: 15px;
+    list-style:none;
+    float:left;
+    display:block;
+    margin:0 3%;
+    width:250px;
+    padding:2em 1em 1em 1em; 		
+    text-align: center;	
+}	
+
+.TopicInfo2{
+    font-family: Rockwell;
+    font-size: 15px;
+    list-style:none;
+    float:left;
+    display:block;
+    margin:0 5%;
+    width:250px;
+    padding:2em 1em 1em 1em; 		
+    text-align: center;	
+}	
+
+.TopicInfo3{
+    font-family: Rockwell;
+    font-size: 15px;
+    list-style:none;
+    float:left;
+    display:block;
+    margin:0 5%;
+    width:250px;
+    padding:2em 1em 1em 1em; 		
+    text-align: center;	
+}	
+
+.TopicInfo4{
+    font-family: Rockwell;
+    font-size: 15px;
+    list-style:none;
+    float:left;
+    display:block;
+    margin:0 3%;
+    width:250px;
+    padding:2em 1em 1em 1em; 		
+    text-align: center;
+    margin-top: 130px;
+}	
+
+.TopicInfo5{
+    font-family: Rockwell;
+    font-size: 15px;
+    list-style:none;
+    float:left;
+    display:block;
+    margin:0 6%;
+    width:250px;
+    padding:2em 1em 1em 1em; 		
+    text-align: center;	
+    margin-top: 130px;
+}	
+
+.TopicInfo6{
+    font-family: Rockwell;
+    font-size: 15px;
+    list-style:none;
+    float:left;
+    display:block;
+    margin:0 1%;
+    width:250px;
+    padding:2em 1em 1em 1em; 		
+    text-align: center;	
+    margin-top: 130px;
+}
+
+
+.TopicInfo p{
+    display:none;
+}	
+
+#BackBtn{
+    margin-left: 10px;
+}

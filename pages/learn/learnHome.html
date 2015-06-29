@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+        <title>Learning Home</title>
+        <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css">
+
+            <!-- Bootstrap -->
+            <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+            <link rel="stylesheet" href="../../css/learning.css" />
+    </head>
+    <body onload="Slideshow()">
+
+        <div class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+                <a href="home" class="navbar-brand">ANSWERQUEST, THE QUEST FOR ANSWERS!</a>
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="collapse navbar-collapse navHeaderCollapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="../../profile.php">Profile</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="Container">
+            <div id="title">
+                <h1>Learn</h1>
+            </div>  
+
+            <br/> <br/>
+
+
+            <div id="slide">
+                <div id="SlideshowImages">
+                    <!-- here you have to add the img tag -->
+                    <img id="Img1" src="img/Learn/His.jpg"/>
+                    <img id="Img2" src="img/Learn/Geo.jpg"/>
+                    <img id="Img3" src="img/Learn/Math.jpg"/>
+
+                </div>
+                <!--Here is going to be the left right buttons, the info and the imgs shown-->
+                <div id="NavLR">
+                    <!-- here is the circles , showes the current img -->
+                    <div id="NavPos">
+                        <div id="SlideCircles">
+                            <ul>
+                                <!-- here you have to add the li tag-->
+                                <li id="S0"></li>
+                                <li id="S1"></li>
+                                <li id="S2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- the left and right button -->
+                    <div id="NavPos2">
+                        <img id="NavLeft" src="img/Learn/left.png" onclick="prev()"/>
+                        <img id="NavRight" src="img/Learn/right.png" onclick="next()"/>
+                    </div>
+                    <!-- the info -->
+                    <div id="PicInfo">
+                        <!-- here you have to add the p tag-->
+                        <p id="SP0">History</p>
+                        <p id="SP1">Geography</p>
+                        <p id="SP2">Maths</p>
+                    </div>
+                </div>
+            </div>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div id="LearnInfo">
+                <h3>Click on a topic to begin:</h3>
+            </div>     
+            <br/>
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    <xsl:element name="h3">
+                        <ul class="img-list">
+                            <li>
+                                <a href="GeoLearn.html">
+                                    <div id = "GeoImgSize">
+                                        <img src="img/Learn/Geo.jpg" />
+                                    </div>
+                                    <span class="text-content">
+                                        <br/><br/>
+                                        <div id = "TitleHover">
+                                            <h1>Geography</h1>
+                                        </div>      
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>  
+                    </xsl:element>
+                </div>
+
+
+                <div class="col-md-3">
+                    <xsl:element name="h3">
+                        <ul class="img-list">
+                            <li>
+                                <a href="HisLearn.html">
+                                    <div id = "HisImgSize">
+                                        <img src="img/Learn/His.jpg" />
+                                    </div>
+                                    <span class="text-content">
+                                        <br/><br/>
+                                        <div id = "TitleHover">
+                                            <h1>History</h1>
+                                        </div>   
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>  
+                    </xsl:element>
+                </div>
+
+
+                <div class="col-md-4">
+                    <xsl:element name="h3">
+                        <ul class="img-list">
+                            <li>
+                                <a href="MathLearn.html">
+                                    <div id = "MathImgSize">
+                                        <img src="img/Learn/Math.jpg" />
+                                    </div>
+                                    <span class="text-content">
+                                        <br/><br/>
+                                        <div id = "TitleHover">
+                                            <h1>Maths</h1>
+                                        </div>   
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>  
+                    </xsl:element>
+                </div>
+
+            </div>
+        </div>
+
+        <br/><br/><br/><br/>
+
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/docs.min.js"></script>
+        <script src="../../js/learning.js"></script>
+
+    </body>
+</html>
