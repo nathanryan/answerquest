@@ -1,9 +1,9 @@
 <?PHP
 
 
-mysql_connect('mysql7.000webhost.com', 'a9684151_root', 'password123');
+mysql_connect('', '', '');
 
-mysql_select_db('a9684151_mytest');
+mysql_select_db('answerquest');
 
 $result = mysql_query("SELECT username, percentage FROM quiz_takers ORDER BY percentage DESC");
 $rank = 1;

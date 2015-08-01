@@ -1,12 +1,12 @@
 <?php 
 
-$db_host = "mysql7.000webhost.com";
+$db_host = "";
 // Place the username for the MySQL database here
-$db_username = "a9684151_root"; 
+$db_username = ""; 
 // Place the password for the MySQL database here
-$db_pass = "password123"; 
+$db_pass = ""; 
 // Place the name for the MySQL database here
-$db_name = "a9684151_mytest";
+$db_name = "answerquest";
 
 // Run the connection here 
 mysql_connect("$db_host","$db_username","$db_pass") or die (mysql_error());
