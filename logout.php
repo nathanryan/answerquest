@@ -1,23 +1,12 @@
 <?PHP
 require_once("./scripts/membersite_config.php");
 
-if (!$fgmembersite->CheckLogin()) {
-    $fgmembersite->RedirectToURL("login.php");
-    exit;
-}
-
-mysql_connect('localhost', 'root', 'password');
-
-mysql_select_db('mytesting_db');
-
-$result = mysql_query("SELECT username, points FROM quiz_takers ORDER BY points DESC");
-$rank = 1;
+$fgmembersite->LogOut();
 ?>
 <!-- 
 *
 * @reference http://www.html-form-guide.com/php-form/php-registration-form.html
 * @reference http://www.html-form-guide.com/php-form/php-login-form.html
-* @reference http://stackoverflow.com/a/7096766
 * @author Nathan Ryan, x13448212
 *
 */
@@ -26,9 +15,9 @@ $rank = 1;
 <!-- BSHC2A Team OBCT Nathan Ryan x13448212 Keith Lok x13323161 Jefferson Tolentino x13452702 Daniel Benhamou x13341086 Usman Akhtar x13358421 -->
 <html>
     <head>
-        <title>Leaderboard</title>
+        <title>Login</title>
         
-        <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css">
+        <link rel="STYLESHEET" type="text/css" href="css/fg_membersite.css" />
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -45,49 +34,42 @@ $rank = 1;
                 <div class="collapse navbar-collapse navHeaderCollapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="profile.php">Profile</a>
+                            <a href="index.html">Home</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-
         <div class="container">
-			<center><h1>Hello <i><?= $fgmembersite->UserFullName() ?></i> ! Here is the</h1>
-            <center><h1>ANSWERQUEST Leaderboard</h1></center>
-
-            <table class="table table-striped" id="list">
-
-                <tr>
-                    <th>Rank</th>
-                    <th>Username</th>
-                    <th>Points</th>
-                </tr>
-
-                <tbody>
-                </tbody>
-
-
-                <?php
-                if (mysql_num_rows($result)) {
-                    while ($row = mysql_fetch_assoc($result)) {
-                        echo "<tr><td>{$rank}</td>
-                              <td>{$row['username']}</td>
-                              <td>{$row['points']}</td></tr>";
-
-                        $rank++;
-                    }
-                }
-                ?>
-
-
-            </table>
+            <div class="col-md-4">
+                <!-- FOR SPACING -->
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-success">
+                    <div class="panel-heading" >
+                        You have logged out
+                    </div>
+                    <div class="panel-body">
+                        <center>
+                            <a href='login.php'>Login Again - Student</a>
+                            <br />
+                            <a href='adminlogin.php'>Login Again - Teacher</a>
+                            <br />
+                            <a href="index.html">Return to Homepage</a>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!-- FOR SPACING -->
+            </div>
         </div>
-        <!-- Bootstrap core JavaScript
-            ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
-        <script src="js/docs.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script type='text/javascript' src='js/gen_validatorv31.js'></script>
     </body>
 </html>

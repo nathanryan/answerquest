@@ -1,0 +1,72 @@
+
+/* Score.js */
+            body{
+
+                text-align: center;
+
+                margin:0px;
+                padding:0px;
+            }
+            #page{
+                display: inline-block;
+                width: 300px;
+            }
+
+            #scorecard{
+                text-align: left;
+                padding:20px;
+                background: #444;
+                color:#FFF;
+                margin-bottom:10px;
+            }
+
+            .score{
+                clear: both;
+                margin-bottom:10px;
+                font-size: 0.85em;
+            }
+            #score{
+                font-size: 1em;
+                width:140px;
+                height:40px;
+                line-height: 40px;
+
+                background: #EEE;
+                display: inline-block;
+                border-radius: 20px;
+                margin-bottom: 10px;
+            }
+            h3{
+                margin:0;
+                padding:0;
+            }
+            #icon{
+                background: #FFF;
+                width:100px;
+                height:100px;
+                color:black;
+                font-size: 4em;
+                text-align: center;
+                line-height: 100px;
+                float:left;
+                margin-right:10px;
+                margin-bottom:10px;
+            }
+            input, progress{
+                width:100%;
+            }
+            progress[value] {
+                -webkit-appearance: none;
+                appearance: none;
+                height:20px;
+            }         
+            progress[value]::-webkit-progress-bar {
+                background-color: #666;
+                border-radius: 0px;
+                overflow: hidden;
+            } 
+            progress[value]::-webkit-progress-value {
+                background: #3D9970;
+                border-radius: 0px; 
+            }
+/* Score.js */

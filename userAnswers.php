@@ -1,4 +1,10 @@
 <?php 
+require_once("./scripts/membersite_config.php");
+
+if (!$fgmembersite->CheckLogin()) {
+    $fgmembersite->RedirectToURL("login.php");
+    exit;
+}
 /*
 PHP, MySQL, Javascript Timed Quiz
     Copyright (C) 2012  Isaac Price
@@ -21,7 +27,7 @@ PHP, MySQL, Javascript Timed Quiz
     This is free software, and you are welcome to redistribute it
     under certain conditions found in the GNU GPL license
 */
-session_start();
+
 if(isset($_POST['radio']) && $_POST['radio'] != ""){
     $answer = preg_replace('/[^0-9]/', "", $_POST['radio']);
     if(!isset($_SESSION['answer_array']) || count($_SESSION['answer_array']) < 1){
@@ -41,11 +47,11 @@ if(isset($_POST['qid']) && $_POST['qid'] != ""){
     $_SESSION['lastQuestion'] = $qid;
 }
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
         <title>Quiz Page</title>
+        
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/style.css" rel="stylesheet"/>
@@ -69,15 +75,15 @@ if(isset($_POST['qid']) && $_POST['qid'] != ""){
                 </div>
             </div>
         </div>  
-        
-        
+
+
         <div class="container">
             <div class="panel panel-success">
                 <div class="panel-heading">Quiz Over </div>
                 <div  class="panel-body">
 
-                   
- <?php
+
+                    <?php
 require_once("scripts/connect_db.php");
 $response = ""; 
 if(!isset($_SESSION['answer_array']) || count($_SESSION['answer_array']) < 1){
@@ -93,8 +99,8 @@ if(!isset($_SESSION['answer_array']) || count($_SESSION['answer_array']) < 1){
             $numCorrect++;
         }
     }
-    $percent = $numCorrect / $count * 100;
-    $percent = intval($percent);
+    $points = $numCorrect++;
+    $points = intval($points);
     if(isset($_POST['complete']) && $_POST['complete'] == "true"){
         if(!isset($_POST['username']) || $_POST['username'] == ""){
             echo "Sorry, We had an error";
@@ -104,43 +110,37 @@ if(!isset($_SESSION['answer_array']) || count($_SESSION['answer_array']) < 1){
         $username = mysql_real_escape_string($username);
         $username = strip_tags($username);
         if(!in_array("1", $_SESSION['answer_array'])){
-            $sql = mysql_query("INSERT INTO quiz_takers (username, percentage, date_time) 
+            $sql = mysql_query("INSERT INTO quiz_takers (username, points, date_time) 
 		VALUES ('$username', '0', now())")or die(mysql_error());
             echo "<center><b>
-        Oh no ! You scored $percent%.
+        Oh no ! You scored $points points.
 </center></b>
         ";
             unset($_SESSION['answer_array']);
             unset($_SESSION['qid_array']);
-            session_destroy();
+            
             exit();
         }
-        $sql = mysql_query("INSERT INTO quiz_takers (username, percentage, date_time) 
-	VALUES ('$username', '$percent', now())")or die(mysql_error());
-        echo "<center><b>Thanks for taking the quiz! You scored $percent%</center></b>";
+        $sql = mysql_query("INSERT INTO quiz_takers (username, points, date_time) 
+	VALUES ('$username', '$points', now())")or die(mysql_error());
+        echo "<center><b>Thanks for taking the quiz! You scored $points points</center></b>";
         unset($_SESSION['answer_array']);
         unset($_SESSION['qid_array']);
-        session_destroy();
+
         exit();
     }
 }
-        ?>
+                    ?>
 
                 </div>
             </div>
         </div> 
-
-       
-
-
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
         <script src="js/bootstrap.js"></script>
-        <script src="js/divfade.js"></script>
-        <script src="js/scripts.js"></script>
-        <script src="js/randomize.js"></script>
+
     </body>
 </html>

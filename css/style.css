@@ -8,9 +8,7 @@
     text-shadow: black 0.3em 0.3em 0.3em;
 }
 
-#DivC { display:none; }
-
 body{
     background: url("../img/subtle_white_mini_waves.png");
+	text-align: center;
 }
-

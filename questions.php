@@ -67,8 +67,8 @@ if(isset($_GET['question'])){
                                 <div class="col-md-2">
 									<div class="panel panel-primary">
                                         <div class="panel-body">
-                                    <label style="cursor:pointer;"><input type="radio" name="rads" value="'.$correct.'">'.$answer.'</label> 
-				<input type="hidden" id="qid" value="'.$id.'" name="qid"><br /><br />
+											<label style="cursor:pointer;"><input type="radio" name="rads" value="'.$correct.'">'.$answer.'</label> 
+											<input type="hidden" id="qid" value="'.$id.'" name="qid"><br /><br />
 										</div>
 									</div>
                                 </div>
@@ -77,7 +77,7 @@ if(isset($_GET['question'])){
 				';
         }
         $output = ''.$q.','.$answers.',
-			<hr /><span id="btnSpan"><button type="button" class="btn btn-default start" onclick="post_answer()">Submit</button></span>';
+			<hr /><span id="btnSpan"><button type="button" class="btn btn-default start" onclick="post_answer(); score.increment()">Submit</button></span>';
         echo $output;
     }
 }

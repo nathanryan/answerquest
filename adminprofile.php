@@ -1,8 +1,8 @@
 <?php
-require_once("./scripts/membersite_config.php");
+require_once("./scripts/admin_membersite_config.php");
 
 if (!$fgmembersite->CheckLogin()) {
-    $fgmembersite->RedirectToURL("login.php");
+    $fgmembersite->RedirectToURL("adminlogin.php");
     exit;
 }
 /*
@@ -37,10 +37,8 @@ if(isset($_GET['msg'])){
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Profile</title>
-		
-        <!--Score.js gamification --><script src="js/score.js"></script><!--Score.js gamification -->
-		
+        <title>Admin Profile</title>
+
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -102,75 +100,19 @@ if(isset($_GET['msg'])){
                 <div class="col-md-3">
 
                 </div>
-                <a href="leaderboard.php"><div class="col-md-3">
+                <a href="addQuestions.php"><div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Add/Remove Questions</div>
+                        <div class="panel-body"><img src="./img/editquiz.png" class="img-responsive center-block" alt="panel1"></div>
+                    </div></a>
+			</div>
+			<a href="leaderboard.php"><div class="col-md-3">
                     <div class="panel panel-default">
                         <div class="panel-heading">Leaderboard</div>
                         <div class="panel-body"><img src="./img/score.png" class="img-responsive center-block" alt="panel1"></div>
                     </div></a>
                     </div>
-                <a href="pages/learn/learnHome.html"><div class="col-md-3">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Learn</div>
-                        <div class="panel-body"><img src="pages/learn/img/Learn/learn.png" class="img-responsive center-block" alt="panel1"></div>
-                    </div></a>
 			</div>
-					
-		<!--Score.js gamification start -->
-        <section id="page">
-            <div id='score'></div>
-            <br/><br/>
-
-            <div id='scorecard'>
-
-                <div id='icon'></div>
-                <h3>John Doe</h3>
-                Level: {level} <br/>
-                Status: {status}<br/>
-                <i>'{quote}'</i>
-
-                <div class='score'>
-                    Score: {score} <br/>
-                    Level score: {levelscore}/{leveltotal} <br/>
-                    Total progress: {totalprogress}% <br/>
-                </div>
-                <progress max="100" value="{levelprogress}"></progress>
-
-            </div>
-        </section>
-
-        <script>
-            // setup
-            var score = new Score();
-
-            var scorecard = document.getElementById("scorecard");
-            var template = scorecard.innerHTML;
-
-            function updateScore(v){
-                // Set score
-                score.set(v);
-                updateCard();
-            };
-
-            function updateCard(){
-                var s = template;
-
-                // Get scorecard
-                var d = score.scorecard();
-
-                // populate template
-                for(var p in d){
-                    s=s.replace(new RegExp('{'+p+'}','g'), d[p]);
-                }
-
-                scorecard.innerHTML = s;
-                scorecard.className = d.status;
-                document.getElementById("score").innerHTML = 'score: '+d.score;
-                document.getElementById("icon").className = 'icons8-' + d.status;
-            };
-
-            updateCard();
-        </script>
-        <!--Score.js gamification end -->
 
 
                     <!-- Bootstrap core JavaScript

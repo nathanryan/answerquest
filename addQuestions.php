@@ -206,13 +206,13 @@ if(isset($_POST['reset']) && $_POST['reset'] != ""){
                 <div class="collapse navbar-collapse navHeaderCollapse">
                     <ul class="nav navbar-nav navbar-right">		
                         <li>
-                            <a href="profile.php">Profile</a>
+                            <a href="adminprofile.php">Admin Profile</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>  
-        
+
         <div style="width:700px;margin-left:auto;margin-right:auto;text-align:center;">
             <p style="color:#06F;"><?php echo $msg; ?></p>
             <h2>What type of question would you like to create?</h2>
@@ -245,16 +245,35 @@ if(isset($_POST['reset']) && $_POST['reset'] != ""){
             </form>
         </div>
         <div class="content" id="mc">
-            <h3>Multiple Choice</h3>
-            <form action="addQuestions.php" name="addMcQuestion" method="post">
+		            <h3>Multiple Choice</h3>
+		<!-- Generate MC Qs -->
+			<br />
+			<br />
+			<strong>Generate a Question</strong>
+            <form name="myformmc">
+                <select name="optone" size="1" onchange="setOptions(document.myformmc.optone.options [document.myformmc.optone.selectedIndex].value);">
+                    <option value=" " selected="selected"> </option>
+                    <option value="1">Geography</option>
+                    <option value="2">History</option>
+                </select>
+                <br /> 
+                <br />
+                <select name="opttwo" size="1">
+                    <option value=" " selected="selected">Please select one of the options above first</option>
+                </select>
+            </form>
+                    
+            <input type="button" onclick="setText()" value="Generate Question" />
+        <!-- Generate MC Qs -->
+            <form action="addQuestions.php" id="form1" name="addMcQuestion" method="post">
                 <strong>Please type your new question here</strong>
                 <br />
-                <textarea id="mcdesc" name="desc" style="width:400px;height:95px;"></textarea>
+                <textarea id="myText" name="desc" style="width:400px;height:95px;"></textarea>
                 <br />
                 <br />
                 <strong>Please create the first answer for the question</strong>
                 <br />
-                <input type="text" id="mcanswer1" name="answer1">&nbsp;
+                <input type="text" id="text1" name="answer1">&nbsp;
                 <label style="cursor:pointer; color:#06F;">
                     <input type="radio" name="iscorrect" value="answer1">Correct Answer?
                 </label>
@@ -262,7 +281,7 @@ if(isset($_POST['reset']) && $_POST['reset'] != ""){
                 <br />
                 <strong>Please create the second answer for the question</strong>
                 <br />
-                <input type="text" id="mcanswer2" name="answer2">&nbsp;
+                <input type="text" id="text2" name="answer2">&nbsp;
                 <label style="cursor:pointer; color:#06F;">
                     <input type="radio" name="iscorrect" value="answer2">Correct Answer?
                 </label>
@@ -270,7 +289,7 @@ if(isset($_POST['reset']) && $_POST['reset'] != ""){
                 <br />
                 <strong>Please create the third answer for the question</strong>
                 <br />
-                <input type="text" id="mcanswer3" name="answer3">&nbsp;
+                <input type="text" id="text3" name="answer3">&nbsp;
                 <label style="cursor:pointer; color:#06F;">
                     <input type="radio" name="iscorrect" value="answer3">Correct Answer?
                 </label>
@@ -278,7 +297,7 @@ if(isset($_POST['reset']) && $_POST['reset'] != ""){
                 <br />
                 <strong>Please create the fourth answer for the question</strong>
                 <br />
-                <input type="text" id="mcanswer4" name="answer4">&nbsp;
+                <input type="text" id="text4" name="answer4">&nbsp;
                 <label style="cursor:pointer; color:#06F;">
                     <input type="radio" name="iscorrect" value="answer4">Correct Answer?
                 </label>
@@ -295,6 +314,6 @@ if(isset($_POST['reset']) && $_POST['reset'] != ""){
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/docs.min.js"></script>
-        <script src="js/generate.js"></script>
+        <script src="js/generatemc.js"></script>
     </body>
 </html>

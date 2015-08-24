@@ -1,4 +1,10 @@
 <?php
+require_once("./scripts/membersite_config.php");
+
+if (!$fgmembersite->CheckLogin()) {
+    $fgmembersite->RedirectToURL("login.php");
+    exit;
+}
 /*
 PHP, MySQL, Javascript Timed Quiz
     Copyright (C) 2012  Isaac Price
@@ -21,7 +27,7 @@ PHP, MySQL, Javascript Timed Quiz
     This is free software, and you are welcome to redistribute it
     under certain conditions found in the GNU GPL license
 */
-session_start();
+
 if(isset($_GET['question'])){
     $question = preg_replace('/[^0-9]/', "", $_GET['question']);
     $next = $question + 1;
@@ -49,40 +55,17 @@ if(isset($_GET['question'])){
     }
 }
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
         <title>Quiz Page</title>
+
+		<!--Score.js gamification --><script src="js/score.js"></script><!--Score.js gamification -->
+		
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/style.css" rel="stylesheet"/>
-        <script type="text/javascript">
-            function countDown(secs,elem) {
-                var element = document.getElementById(elem);
-                element.innerHTML = "You have "+secs+" seconds remaining.";
-                if(secs < 1) {
-                    var xhr = new XMLHttpRequest();
-                    var url = "userAnswers.php";
-                    var vars = "radio=0"+"&qid="+<?php echo $question; ?>;
-                    xhr.open("POST", url, true);
-                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                    xhr.onreadystatechange = function() {
-                        if(xhr.readyState == 4 && xhr.status == 200) {
-                            alert("You did not answer the question in the allotted time. It will be marked as incorrect.");
-                            clearTimeout(timer);
-                        }
-                    }
-                    xhr.send(vars);
-                    document.getElementById('counter_status').innerHTML = "";
-                    document.getElementById('btnSpan').innerHTML = '<h2>Times Up!</h2>';
-                    document.getElementById('btnSpan').innerHTML += '<a href="quiz.php?question=<?php echo $next; ?>">Click here now</a>';
-
-                }
-                secs--;
-                var timer = setTimeout('countDown('+secs+',"'+elem+'")',1000);
-            }
-        </script>
+		
         <script>
             function getQuestion(){
                 var hr = new XMLHttpRequest();
@@ -120,7 +103,7 @@ if(isset($_GET['question'])){
                 p.onreadystatechange = function() {
                     if(p.readyState == 4 && p.status == 200) {
                         document.getElementById("status").innerHTML = '';
-                        
+
                         var url = 'quiz.php?question=<?php echo $next; ?>';
                         window.location = url;
                     }
@@ -136,7 +119,6 @@ if(isset($_GET['question'])){
             }
         </script>
     </head>
-
     <body onLoad="getQuestion()">
         <div class="navbar navbar-inverse navbar-static-top">
             <div class="container">
@@ -160,17 +142,10 @@ if(isset($_GET['question'])){
             <div class="panel panel-success">
                 <div class="panel-heading">Question </div>
                 <div  class="panel-body">
-
                     <div id="status">
-
                         <div id="question"></div>
-
                     </div>
-
                     <br/>
-
-
-
                 </div>
             </div>
             <div class="panel panel-primary">
@@ -182,16 +157,52 @@ if(isset($_GET['question'])){
                 </div>
             </div>
         </div> 
+		
+		<!-- Score.js -->
+		<script>
+            // setup
+            var score = new Score();
+
+            var scorecard = document.getElementById("scorecard");
+            var slider = document.getElementById("slider");
+            var template = scorecard.innerHTML;
+
+            function updateScore(v){
+                // Set score
+                score.set(v);
+                updateCard();
+            };
+
+            function updateCard(){
+                var s = template;
+
+                // Get scorecard
+                var d = score.scorecard();
+
+                // populate template
+                for(var p in d){
+                    s=s.replace(new RegExp('{'+p+'}','g'), d[p]);
+                }
+
+                slider.value = d.score;
+
+                scorecard.innerHTML = s;
+                scorecard.className = d.status;
+                document.getElementById("score").innerHTML = 'score: '+d.score;
+                document.getElementById("icon").className = 'icons8-' + d.status;
+            };
+
+            updateCard();
+        </script>
+		<!-- Score.js -->
+
 
         <script type="text/javascript">countDown(30,"counter_status");</script>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-                        <!-- Include all compiled plugins (below), or include individual files as needed -->
-                        <script src="js/bootstrap.min.js"></script>
-                        <script src="js/bootstrap.js"></script>
-                        <script src="js/divfade.js"></script>
-                        <script src="js/scripts.js"></script>
-                        <script src="js/randomize.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap.js"></script>
     </body>
 </html>
