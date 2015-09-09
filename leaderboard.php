@@ -6,9 +6,9 @@ if (!$fgmembersite->CheckLogin()) {
     exit;
 }
 
-mysql_connect('mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/', 'adminv2p79rR', 'bMlyIkEbj4GU');
+mysql_connect('localhost', 'root', 'password');
 
-mysql_select_db('answerquest');
+mysql_select_db('mytesting_db');
 
 $result = mysql_query("SELECT username, points FROM quiz_takers ORDER BY points DESC");
 $rank = 1;
